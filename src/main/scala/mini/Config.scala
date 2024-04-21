@@ -4,14 +4,17 @@ package mini
 
 import junctions.NastiBundleParameters
 
-// TODO:
-case class Config(core: CoreConfig, cache: CacheConfig, nasti: NastiBundleParameters)
+// u can have external accesss to class parameters at run time 
+// and no need to use 'new' when instantiating
+case class Config(core: CoreConfig, 
+                  cache: CacheConfig, 
+                  nasti: NastiBundleParameters)
 
 object MiniConfig {
   def apply(): Config = {
-    val xlen = 32
-    Config(
-      core = CoreConfig(
+    val xlen = 32 // 32 bit core
+    Config( // use case class Config
+      core = CoreConfig(  // instantiate the three main components within the core
         xlen = xlen,
         makeAlu = new AluArea(_),
         makeBrCond = new BrCondArea(_),

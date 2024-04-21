@@ -102,8 +102,9 @@ object Tile {
   def apply(config: Config): Tile = new Tile(config.core, config.nasti, config.cache)
 }
 
-class Tile(val coreParams: CoreConfig, val nastiParams: NastiBundleParameters, val cacheParams: CacheConfig)
-    extends Module {
+class Tile( val coreParams: CoreConfig, 
+            val nastiParams: NastiBundleParameters, 
+            val cacheParams: CacheConfig ) extends Module {
   val io = IO(new TileIO(coreParams.xlen, nastiParams))
   val core = Module(new Core(coreParams))
   val icache = Module(new Cache(cacheParams, nastiParams, coreParams.xlen))

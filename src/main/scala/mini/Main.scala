@@ -5,13 +5,13 @@ package mini
 import circt.stage.ChiselStage
 
 object Main extends App {
-  val config = MiniConfig() // get config parameters for Tile instantiate 
+  val config = MiniConfig() // get config parameters(three components) for Tile instantiate 
   ChiselStage.emitSystemVerilogFile( // generate Systeam Verilog file: Tile.sv
     new Tile( // the Top is Tile
-      coreParams = config.core,
-      nastiParams = config.nasti,
-      cacheParams = config.cache
+      coreParams = config.core, // core parameters
+      nastiParams = config.nasti, // bus parameters
+      cacheParams = config.cache  // icache and dcache parameters 
     ),
-    args
+    args  // return command args
   )
 }
