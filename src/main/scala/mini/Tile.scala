@@ -98,7 +98,7 @@ class TileIO(xlen: Int, nastiParams: NastiBundleParameters) extends Bundle {
   val nasti = new NastiBundle(nastiParams)
 }
 
-object Tile {
+object Tile { // companion object
   def apply(config: Config): Tile = new Tile(config.core, config.nasti, config.cache)
 }
 
